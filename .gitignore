@@ -1,0 +1,26 @@
+# Build output
+build/
+build-dist/
+dist/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+__pycache__/
+.DS_Store
+
+# Machine-specific signing (contains your Team ID). See Config/Local.xcconfig.example.
+Config/Local.xcconfig
+
+# Third-party sound packs: personal use only, never commit them.
+*.zip
+KliqPacks/
+Profiles/
+ACNL/
+*.ogg
+*.mp3
+PACKS-NOTICE.txt
+keymap.json
+
+# Not part of Kliq
+apple-silicon-accelerometer/
+PRD.md
