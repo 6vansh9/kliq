@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		180F1A1B4357E6DAFB06D08C /* SoundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B981069391CACA457EE40 /* SoundProfile.swift */; };
+		2072625F46BA62AA4FA409BE /* KeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD948A331F228EF84247E23 /* KeyMonitor.swift */; };
+		284C06DD76FCB9E01D7F5FA2 /* ProfileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FAE857BF998FED0D5BACC /* ProfileImporter.swift */; };
+		30C8E4A5B24C13732EDF2001 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F3B7B6911B8C002902D0E6 /* ScreenshotMode.swift */; };
+		3C91096D56CDCA52181E9EBB /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBC8A140EB49DF7C339307 /* Components.swift */; };
+		426D10DEB8FE59E7CE42D415 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5496C7D015C8B81CB52F9B9 /* Logging.swift */; };
+		64AD3A5E296C57210797DAB8 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90964F57D19648E4A0813FB9 /* SettingsWindow.swift */; };
+		65755DE447801EA0AE1B844A /* import_mechvibes.py in Resources */ = {isa = PBXBuildFile; fileRef = 716CFFFBB1366FB840998C1B /* import_mechvibes.py */; };
+		9D6C55C99341A7547913F6BD /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = EF745CCE9E38029A61C7E73A /* Sounds */; };
+		AFF3A288729F8595ABBAB427 /* SoundEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C44E196A4366CBD635D33BF /* SoundEngine.swift */; };
+		C65C4DBE531496526D052614 /* ForceSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2038AF0A06A0FD7E3F3563 /* ForceSource.swift */; };
+		C96DE6DC2777E145E88F584C /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94A64A063FF2ACED72BB38 /* PopoverView.swift */; };
+		DDF11CFB790DA657D8E9648B /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22497269A8CBED01675E5BBF /* MenuBarIcon.swift */; };
+		E64B8CA1EF22C0A957EBF2CE /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6344C0A86548B0C986ABA /* HotKey.swift */; };
+		EAFE87780757D2648626EFFB /* KliqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC00584CEDE248DE99B0404 /* KliqController.swift */; };
+		F1C4CD186FB1BAC50636667D /* KliqApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26970FF51E244C36A8356A80 /* KliqApp.swift */; };
+		F4FCB26B4880C77FE60F3EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1CD354EDE531B411C36A5B /* Assets.xcassets */; };
+		F8A33C1D242F2E4D0D482CD7 /* VelocityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5A9144631D8D8304B8B905 /* VelocityMapper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		12CBC8A140EB49DF7C339307 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		22497269A8CBED01675E5BBF /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
+		26970FF51E244C36A8356A80 /* KliqApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KliqApp.swift; sourceTree = "<group>"; };
+		46B544FE1DC173DB8B901E39 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<group>"; };
+		494B981069391CACA457EE40 /* SoundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundProfile.swift; sourceTree = "<group>"; };
+		6C44E196A4366CBD635D33BF /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
+		6DF6344C0A86548B0C986ABA /* HotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
+		716CFFFBB1366FB840998C1B /* import_mechvibes.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = import_mechvibes.py; sourceTree = "<group>"; };
+		72F3B7B6911B8C002902D0E6 /* ScreenshotMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMode.swift; sourceTree = "<group>"; };
+		764FAE857BF998FED0D5BACC /* ProfileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImporter.swift; sourceTree = "<group>"; };
+		7C2038AF0A06A0FD7E3F3563 /* ForceSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceSource.swift; sourceTree = "<group>"; };
+		8C1CD354EDE531B411C36A5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		90964F57D19648E4A0813FB9 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		9E5A9144631D8D8304B8B905 /* VelocityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelocityMapper.swift; sourceTree = "<group>"; };
+		B6939CA9DD6C947D963B8E4D /* Kliq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kliq.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE94A64A063FF2ACED72BB38 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
+		C5496C7D015C8B81CB52F9B9 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		EF745CCE9E38029A61C7E73A /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sounds; path = Kliq/Resources/Sounds; sourceTree = SOURCE_ROOT; };
+		FBD948A331F228EF84247E23 /* KeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMonitor.swift; sourceTree = "<group>"; };
+		FEC00584CEDE248DE99B0404 /* KliqController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KliqController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0528A87110AAFBDB15202AF4 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				716CFFFBB1366FB840998C1B /* import_mechvibes.py */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		338A631749AA21EF56789F6A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				46B544FE1DC173DB8B901E39 /* Signing.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		69899D987AD98312D73C609D /* Kliq */ = {
+			isa = PBXGroup;
+			children = (
+				8C1CD354EDE531B411C36A5B /* Assets.xcassets */,
+				8C85BA71C9A87478B134357A /* Resources */,
+				94CE9C051DCE7DD299C94019 /* Sources */,
+			);
+			path = Kliq;
+			sourceTree = "<group>";
+		};
+		6F7B7B7A1EDFEC64813BE016 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6939CA9DD6C947D963B8E4D /* Kliq.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C85BA71C9A87478B134357A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EF745CCE9E38029A61C7E73A /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		94CE9C051DCE7DD299C94019 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				12CBC8A140EB49DF7C339307 /* Components.swift */,
+				7C2038AF0A06A0FD7E3F3563 /* ForceSource.swift */,
+				6DF6344C0A86548B0C986ABA /* HotKey.swift */,
+				FBD948A331F228EF84247E23 /* KeyMonitor.swift */,
+				26970FF51E244C36A8356A80 /* KliqApp.swift */,
+				FEC00584CEDE248DE99B0404 /* KliqController.swift */,
+				C5496C7D015C8B81CB52F9B9 /* Logging.swift */,
+				22497269A8CBED01675E5BBF /* MenuBarIcon.swift */,
+				BE94A64A063FF2ACED72BB38 /* PopoverView.swift */,
+				764FAE857BF998FED0D5BACC /* ProfileImporter.swift */,
+				72F3B7B6911B8C002902D0E6 /* ScreenshotMode.swift */,
+				90964F57D19648E4A0813FB9 /* SettingsWindow.swift */,
+				6C44E196A4366CBD635D33BF /* SoundEngine.swift */,
+				494B981069391CACA457EE40 /* SoundProfile.swift */,
+				9E5A9144631D8D8304B8B905 /* VelocityMapper.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C5A9C097CFF9A71A39E74376 = {
+			isa = PBXGroup;
+			children = (
+				338A631749AA21EF56789F6A /* Config */,
+				69899D987AD98312D73C609D /* Kliq */,
+				0528A87110AAFBDB15202AF4 /* tools */,
+				6F7B7B7A1EDFEC64813BE016 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C64B4205844CAE777D133F31 /* Kliq */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF84F5DF7CE45343004115DB /* Build configuration list for PBXNativeTarget "Kliq" */;
+			buildPhases = (
+				DD943667F6E3395074D6119D /* Sources */,
+				CCBFB94BAFAD6034EA448330 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kliq;
+			packageProductDependencies = (
+			);
+			productName = Kliq;
+			productReference = B6939CA9DD6C947D963B8E4D /* Kliq.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BD37C7EB67DF7A928A8A65E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					C64B4205844CAE777D133F31 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7362B472F3D285CB2062B62B /* Build configuration list for PBXProject "Kliq" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C5A9C097CFF9A71A39E74376;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6F7B7B7A1EDFEC64813BE016 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C64B4205844CAE777D133F31 /* Kliq */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CCBFB94BAFAD6034EA448330 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FCB26B4880C77FE60F3EC0 /* Assets.xcassets in Resources */,
+				9D6C55C99341A7547913F6BD /* Sounds in Resources */,
+				65755DE447801EA0AE1B844A /* import_mechvibes.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD943667F6E3395074D6119D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C91096D56CDCA52181E9EBB /* Components.swift in Sources */,
+				C65C4DBE531496526D052614 /* ForceSource.swift in Sources */,
+				E64B8CA1EF22C0A957EBF2CE /* HotKey.swift in Sources */,
+				2072625F46BA62AA4FA409BE /* KeyMonitor.swift in Sources */,
+				F1C4CD186FB1BAC50636667D /* KliqApp.swift in Sources */,
+				EAFE87780757D2648626EFFB /* KliqController.swift in Sources */,
+				426D10DEB8FE59E7CE42D415 /* Logging.swift in Sources */,
+				DDF11CFB790DA657D8E9648B /* MenuBarIcon.swift in Sources */,
+				C96DE6DC2777E145E88F584C /* PopoverView.swift in Sources */,
+				284C06DD76FCB9E01D7F5FA2 /* ProfileImporter.swift in Sources */,
+				30C8E4A5B24C13732EDF2001 /* ScreenshotMode.swift in Sources */,
+				64AD3A5E296C57210797DAB8 /* SettingsWindow.swift in Sources */,
+				AFF3A288729F8595ABBAB427 /* SoundEngine.swift in Sources */,
+				180F1A1B4357E6DAFB06D08C /* SoundProfile.swift in Sources */,
+				F8A33C1D242F2E4D0D482CD7 /* VelocityMapper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F3EF73605B4AC093360BFF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6D7C39A358A05B84A9184785 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46B544FE1DC173DB8B901E39 /* Signing.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Kliq/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.vansh.Kliq;
+				PRODUCT_NAME = Kliq;
+				SDKROOT = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+			};
+			name = Release;
+		};
+		97C407029E5341DC594A2125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F4DFC994B4A934435E9E5051 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46B544FE1DC173DB8B901E39 /* Signing.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Kliq/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.vansh.Kliq;
+				PRODUCT_NAME = Kliq;
+				SDKROOT = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7362B472F3D285CB2062B62B /* Build configuration list for PBXProject "Kliq" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97C407029E5341DC594A2125 /* Debug */,
+				5F3EF73605B4AC093360BFF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FF84F5DF7CE45343004115DB /* Build configuration list for PBXNativeTarget "Kliq" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4DFC994B4A934435E9E5051 /* Debug */,
+				6D7C39A358A05B84A9184785 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BD37C7EB67DF7A928A8A65E /* Project object */;
+}

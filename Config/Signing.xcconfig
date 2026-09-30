@@ -1,0 +1,7 @@
+// Shared signing settings. Your personal Team ID goes in Local.xcconfig
+// (not required: you can also pick the team in Xcode's Signing & Capabilities tab).
+CODE_SIGN_STYLE = Automatic
+CODE_SIGN_IDENTITY = Apple Development
+DEVELOPMENT_TEAM =
+
+#include? "Local.xcconfig"

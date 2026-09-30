@@ -1,0 +1,4 @@
+// Copy this file to Config/Local.xcconfig and put your own Team ID in it.
+// Find it with: security find-certificate -c "Apple Development" -p | openssl x509 -noout -subject
+// (the OU= value). Config/Local.xcconfig is git-ignored.
+DEVELOPMENT_TEAM = YOURTEAMID
