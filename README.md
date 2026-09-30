@@ -5,14 +5,27 @@
 <h1 align="center">Kliq</h1>
 
 <p align="center">
-  Mechanical keyboard sounds for your Mac's built-in keyboard.<br>
+  Free, open-source mechanical keyboard sounds for your Mac.<br>
   A tiny menu bar app: every key you press plays a satisfying click, thock or clack.
 </p>
 
 <p align="center">
-  <a href="https://github.com/6vansh9/kliq/releases/latest"><b>Download Kliq</b></a>
-  &nbsp;·&nbsp; macOS 13 or later &nbsp;·&nbsp; Apple Silicon and Intel &nbsp;·&nbsp; Free
+  <a href="https://github.com/6vansh9/kliq/releases/latest"><img src="https://img.shields.io/badge/Download-Kliq%20for%20macOS-black?style=for-the-badge&logo=apple" alt="Download Kliq for macOS"></a>
 </p>
+
+<p align="center">
+  macOS 13 or later &nbsp;·&nbsp; Apple Silicon and Intel &nbsp;·&nbsp; Free and open source (MIT)
+</p>
+
+## What is Kliq?
+
+Kliq is a lightweight menu bar app that plays realistic mechanical keyboard sounds as you type, in any app. It sits quietly in your menu bar, doesn't record what you type, and you can switch it on or off with a shortcut.
+
+## Why I made it
+
+Apps like Haptyk offer this experience as a paid product. So I built my own version and made it completely free and open source, for everyone.
+
+Kliq is *inspired by* Haptyk, but it isn't the same app. For example, Kliq uses fixed intensity levels (Soft, Medium, Hard) that you pick yourself, rather than detecting how hard you press each key.
 
 | Light | Dark |
 |---|---|
