@@ -135,6 +135,28 @@ private struct GeneralPane: View {
             .tint(Theme.accent)
 
             Section {
+                Picker("Play sounds through", selection: $controller.outputRoute) {
+                    ForEach(OutputRoute.allCases) { route in
+                        Text(route.displayName).tag(route)
+                    }
+                }
+            } footer: {
+                VStack(alignment: .leading, spacing: 4) {
+                    if controller.outputRoute == .builtInSpeakers {
+                        if let name = controller.outputDeviceName {
+                            Text("Now playing through \(name). Music, videos and calls stay on your current output.")
+                        } else {
+                            Text("Built-in speakers aren't available right now (for example, with the lid closed), so sounds follow the system output.")
+                                .foregroundStyle(.orange)
+                        }
+                        Text("Wired headphones in the headphone jack replace the MacBook's speakers, so with them plugged in Kliq's sounds play in the headphones too.")
+                    } else {
+                        Text("Sounds play wherever the system output is, including Bluetooth headphones.")
+                    }
+                }
+            }
+
+            Section {
                 LabeledContent("Turn Kliq on or off") {
                     ShortcutRecorder(shortcut: $controller.toggleShortcut)
                 }

@@ -40,6 +40,11 @@ struct PopoverView: View {
                     SectionLabel("Volume")
                     VolumeSlider(value: $controller.volume)
                 }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    SectionLabel("Play sounds through")
+                    OutputRouteControl(selection: $controller.outputRoute)
+                }
             }
             .opacity(controller.isEnabled ? 1 : 0.5)
             .kliqAnimation(value: controller.isEnabled)

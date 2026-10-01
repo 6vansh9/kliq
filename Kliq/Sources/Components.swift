@@ -108,23 +108,45 @@ struct KliqSwitch: View {
     }
 }
 
-// MARK: - Intensity
+// MARK: - Segmented pills
 
 /// Soft / Medium / Hard with a sliding amber pill behind the selection.
 struct IntensityControl: View {
     @Binding var selection: Intensity
+
+    var body: some View {
+        PillPicker(selection: $selection, options: Intensity.allCases, label: "Intensity") { $0.displayName }
+    }
+}
+
+/// MacBook / System: where Kliq's sounds play.
+struct OutputRouteControl: View {
+    @Binding var selection: OutputRoute
+
+    var body: some View {
+        PillPicker(selection: $selection, options: OutputRoute.allCases, label: "Play sounds through") { $0.shortName }
+            .help("MacBook plays sounds from the built-in speakers even with headphones connected")
+    }
+}
+
+/// A row of options with a sliding amber pill behind the selected one.
+struct PillPicker<Value: Hashable>: View {
+    @Binding var selection: Value
+    let options: [Value]
+    let label: String
+    let title: (Value) -> String
 
     @Namespace private var namespace
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         HStack(spacing: 2) {
-            ForEach(Intensity.allCases) { intensity in
-                let selected = intensity == selection
+            ForEach(options, id: \.self) { option in
+                let selected = option == selection
                 Button {
-                    withKliqAnimation(reduceMotion) { selection = intensity }
+                    withKliqAnimation(reduceMotion) { selection = option }
                 } label: {
-                    Text(intensity.displayName)
+                    Text(title(option))
                         .font(.system(size: 12, weight: selected ? .semibold : .medium, design: .rounded))
                         .foregroundStyle(selected ? Theme.onAccent : Color.secondary)
                         .frame(maxWidth: .infinity)
@@ -147,7 +169,7 @@ struct IntensityControl: View {
         .background(Capsule().fill(Theme.fill))
         .overlay(Capsule().strokeBorder(Theme.border, lineWidth: 1))
         .accessibilityElement(children: .contain)
-        .accessibilityLabel("Intensity")
+        .accessibilityLabel(label)
     }
 }
 

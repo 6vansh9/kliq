@@ -22,6 +22,7 @@ final class KliqController: ObservableObject {
         static let showMenuBarIcon = "showMenuBarIcon"
         static let hasLaunchedBefore = "hasLaunchedBefore"
         static let toggleShortcut = "toggleShortcut"
+        static let outputRoute = "outputRoute"
     }
 
     private static let healthCheckInterval: TimeInterval = 2.0
@@ -56,6 +57,14 @@ final class KliqController: ObservableObject {
     @Published var keyUpSounds: Bool {
         didSet { defaults.set(keyUpSounds, forKey: Keys.keyUpSounds) }
     }
+    /// Where sounds play: the built-in speakers (default) or the system output.
+    @Published var outputRoute: OutputRoute {
+        didSet {
+            defaults.set(outputRoute.rawValue, forKey: Keys.outputRoute)
+            soundEngine.setOutputRoute(outputRoute)
+            if outputRoute != oldValue { previewSound() }
+        }
+    }
     @Published var showMenuBarIcon: Bool {
         didSet { defaults.set(showMenuBarIcon, forKey: Keys.showMenuBarIcon) }
     }
@@ -82,6 +91,8 @@ final class KliqController: ObservableObject {
     @Published private(set) var profileHasKeyUpSounds = false
     @Published private(set) var inputMonitoringGranted = false
     @Published private(set) var errorMessage: String?
+    /// The device Kliq is pinned to, or nil while it follows the system output.
+    @Published private(set) var outputDeviceName: String?
     @Published private(set) var importState: ImportState = .idle
     /// Mirrors `SMAppService.mainApp`; refreshed whenever settings are shown.
     @Published private(set) var launchAtLogin = false
@@ -121,6 +132,7 @@ final class KliqController: ObservableObject {
             Keys.soundProfile: SoundProfile.default.id,
             Keys.keyUpSounds: false,
             Keys.showMenuBarIcon: true,
+            Keys.outputRoute: OutputRoute.default.rawValue,
         ])
         isEnabled = defaults.bool(forKey: Keys.enabled)
         volume = defaults.double(forKey: Keys.volume)
@@ -130,7 +142,9 @@ final class KliqController: ObservableObject {
         let profile = profiles.first { $0.id == savedID } ?? .default
         availableProfiles = profiles
         soundProfile = profile
-        soundEngine = SoundEngine(profile: profile)
+        let route = OutputRoute(rawValue: defaults.string(forKey: Keys.outputRoute) ?? "") ?? .default
+        outputRoute = route
+        soundEngine = SoundEngine(profile: profile, outputRoute: route)
         profileHasKeyUpSounds = soundEngine.hasKeyUpSounds
         keyUpSounds = defaults.bool(forKey: Keys.keyUpSounds)
         showMenuBarIcon = defaults.bool(forKey: Keys.showMenuBarIcon)
@@ -159,6 +173,11 @@ final class KliqController: ObservableObject {
     private func wireCallbacks() {
         soundEngine.onError = { [weak self] message in
             MainActor.assumeIsolated { self?.errorMessage = message }
+        }
+        soundEngine.onOutputDeviceChange = { [weak self] name in
+            MainActor.assumeIsolated {
+                if self?.outputDeviceName != name { self?.outputDeviceName = name }
+            }
         }
         // Key codes are used only to pick each key's sound; they're never logged or stored.
         keyMonitor.onKeyDown = { [weak self] time, keyCode in

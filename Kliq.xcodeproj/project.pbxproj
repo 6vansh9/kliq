@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		180F1A1B4357E6DAFB06D08C /* SoundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B981069391CACA457EE40 /* SoundProfile.swift */; };
 		2072625F46BA62AA4FA409BE /* KeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD948A331F228EF84247E23 /* KeyMonitor.swift */; };
+		24423A41083E5A396F5D9DC9 /* AudioOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174B079A9CF39157D62049B /* AudioOutput.swift */; };
 		284C06DD76FCB9E01D7F5FA2 /* ProfileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764FAE857BF998FED0D5BACC /* ProfileImporter.swift */; };
 		30C8E4A5B24C13732EDF2001 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F3B7B6911B8C002902D0E6 /* ScreenshotMode.swift */; };
 		3C91096D56CDCA52181E9EBB /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBC8A140EB49DF7C339307 /* Components.swift */; };
@@ -36,6 +37,7 @@
 		6C44E196A4366CBD635D33BF /* SoundEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEngine.swift; sourceTree = "<group>"; };
 		6DF6344C0A86548B0C986ABA /* HotKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		716CFFFBB1366FB840998C1B /* import_mechvibes.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = import_mechvibes.py; sourceTree = "<group>"; };
+		7174B079A9CF39157D62049B /* AudioOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOutput.swift; sourceTree = "<group>"; };
 		72F3B7B6911B8C002902D0E6 /* ScreenshotMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMode.swift; sourceTree = "<group>"; };
 		764FAE857BF998FED0D5BACC /* ProfileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImporter.swift; sourceTree = "<group>"; };
 		7C2038AF0A06A0FD7E3F3563 /* ForceSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceSource.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		94CE9C051DCE7DD299C94019 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7174B079A9CF39157D62049B /* AudioOutput.swift */,
 				12CBC8A140EB49DF7C339307 /* Components.swift */,
 				7C2038AF0A06A0FD7E3F3563 /* ForceSource.swift */,
 				6DF6344C0A86548B0C986ABA /* HotKey.swift */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24423A41083E5A396F5D9DC9 /* AudioOutput.swift in Sources */,
 				3C91096D56CDCA52181E9EBB /* Components.swift in Sources */,
 				C65C4DBE531496526D052614 /* ForceSource.swift in Sources */,
 				E64B8CA1EF22C0A957EBF2CE /* HotKey.swift in Sources */,

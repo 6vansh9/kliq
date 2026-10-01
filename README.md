@@ -40,6 +40,7 @@ Kliq is *inspired by* Haptyk, but it isn't the same app. For example, Kliq uses 
 - **Five built-in sounds:** Creamy, Thock, Pop, Clicky and Typewriter, all synthesized for Kliq.
 - **Every key has its own sound.** Press the same key twice and it sounds the same (with a tiny natural variation in pitch and volume, so it never sounds robotic). Space, Return and friends get a heavier sound.
 - **Intensity:** Soft, Medium or Hard. Soft is quieter and duller, Hard is louder and fuller.
+- **Plays from the MacBook's speakers:** keep music and calls in your Bluetooth earphones while key sounds come from the laptop. Or switch to *Same as system output*.
 - **Bring your own sounds:** import any [Mechvibes](https://mechvibes.com/sound-packs) sound pack, with per-key sounds and optional key-release sounds.
 - **Stays out of the way:** lives in the menu bar, turns on and off with **⌃⌥K** from any app, and can launch at login.
 - **Private:** never uses the microphone, makes no network connections and doesn't record what you type. It only uses the fact that a key was pressed.
@@ -63,12 +64,12 @@ Click the keycap icon in the menu bar (filled when on, outlined when off):
 
 - **Power switch** turns the sounds on or off.
 - **Sound cards:** click one to use it, hover and click ▶ to preview it, right-click to change its tag (Clicky, Tactile, Linear or Fun).
-- **Intensity** and **Volume**.
+- **Intensity**, **Volume**, and **Play sounds through** (MacBook speakers or the system output).
 - **Footer:** Settings, the profiles folder, and Quit.
 
 The **Settings** window (gear icon, or open Kliq again from Applications) has:
 
-- **General:** launch at login, show or hide the menu bar icon, and the on/off shortcut (click it to record a new one, ⌫ clears it).
+- **General:** where sounds play, launch at login, show or hide the menu bar icon, and the on/off shortcut (click it to record a new one, ⌫ clears it).
 - **Sounds:** all sounds, plus **Import…** and **Remove…** for your own packs.
 - **About:** version and credits for every sound pack.
 
@@ -161,6 +162,7 @@ Kliq/Sources/
   KliqController.swift       App state and the key → velocity → sound pipeline
   KeyMonitor.swift           Listen-only event tap for key presses
   SoundEngine.swift          Audio output: per-key variants, 12 player nodes with pitch variation
+  AudioOutput.swift          Output route setting, built-in speaker lookup and device-change listener
   SoundProfile.swift         Sound folders, type tags and credits
   ProfileImporter.swift      Import and remove sounds from Settings
   HotKey.swift               Global on/off shortcut
@@ -179,7 +181,7 @@ docs/                        Icon preview and screenshots
 2. **Velocity:** every key plays immediately at the chosen Intensity. MacBook keys don't report pressure, so Kliq doesn't guess; the code has a `ForceSource` protocol so a real force sensor could be plugged in later without touching the sound engine.
 3. **Sound:** the Intensity picks the soft, medium or hard layer. Each key always gets the same variant: the pack's own mapping if it has one, otherwise the heaviest sound for Space and Return, otherwise `keyCode % variants`. Sounds play on a pool of 12 always-running player nodes, each with a varispeed unit for a random ±1.5% pitch change, and the volume varies by ±5%.
 
-Output device changes (headphones in or out) rebuild the audio engine, and a health check restarts anything that stopped, for example after sleep.
+By default Kliq points its own output unit at the built-in speakers (`kAudioOutputUnitProperty_CurrentDevice`) without changing the system output, and re-checks whenever devices come or go. Wired headphones replace the speakers on MacBooks, so sounds follow them. Output device changes (headphones in or out) restart the audio engine, and a health check restarts anything that stopped, for example after sleep.
 
 ## License
 

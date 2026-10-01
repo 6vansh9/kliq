@@ -1,3 +1,4 @@
+import AudioToolbox
 import AVFoundation
 import Darwin
 
@@ -86,6 +87,8 @@ final class SoundEngine {
 
     /// Called after the engine had to be rebuilt or failed to start.
     var onError: ((String?) -> Void)?
+    /// Called with the device Kliq is playing through (nil: following the system output).
+    var onOutputDeviceChange: ((String?) -> Void)?
 
     private var engine = AVAudioEngine()
     private var players: [AVAudioPlayerNode] = []
@@ -99,15 +102,23 @@ final class SoundEngine {
     private var configObserver: NSObjectProtocol?
     private var wantsRunning = false
     private var restartPending = false
+    private(set) var outputRoute: OutputRoute
+    /// The device set on the output unit, or nil while it follows the system output.
+    private var pinnedDevice: AudioDeviceID?
+    private var deviceWatcher: AudioDeviceWatcher?
 
     var isRunning: Bool { engine.isRunning }
 
     var hasSounds: Bool { format != nil }
 
-    init(profile: SoundProfile) {
+    init(profile: SoundProfile, outputRoute: OutputRoute) {
         self.profile = profile
+        self.outputRoute = outputRoute
         sounds = Self.loadSounds(profile: profile)
         format = sounds.format
+        deviceWatcher = AudioDeviceWatcher { [weak self] in
+            self?.scheduleOutputCheck(reason: "audio devices changed")
+        }
     }
 
     deinit {
@@ -242,6 +253,9 @@ final class SoundEngine {
         if engine.isRunning { return true }
         Log.output.info("Starting output engine")
 
+        // Before any nodes are attached, since it may replace the engine.
+        applyOutputDevice()
+
         if players.isEmpty {
             for _ in 0..<Self.poolSize {
                 let player = AVAudioPlayerNode()
@@ -289,23 +303,114 @@ final class SoundEngine {
     }
 
     /// Output device changed (headphones, sample rate, etc.). The engine has
-    /// already stopped itself; reconnect and restart.
-    ///
-    /// Bursts of notifications are coalesced into one restart, and a change that
-    /// leaves the engine running needs no action.
+    /// usually stopped itself; reconnect and restart.
     private func handleConfigurationChange() {
-        let running = engine.isRunning
-        Log.output.notice("Configuration change (running: \(running))")
-        guard wantsRunning, !restartPending, !running else { return }
-        Log.output.notice("Restarting output engine in 0.2 s")
+        Log.output.notice("Configuration change (running: \(self.engine.isRunning))")
+        scheduleOutputCheck(reason: "engine configuration changed")
+    }
+
+    /// Bursts of device and configuration notifications are coalesced into one
+    /// check. It restarts the engine only when it stopped or when Kliq's output
+    /// device should change, so a restart that triggers another notification
+    /// finds nothing to do and can't loop.
+    private func scheduleOutputCheck(reason: String) {
+        guard wantsRunning, !restartPending else { return }
+        Log.output.notice("Checking output in 0.3 s (\(reason, privacy: .public))")
         restartPending = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let self else { return }
             self.restartPending = false
-            guard self.wantsRunning, !self.engine.isRunning else { return }
-            for player in self.players { player.stop() }
-            self.start()
+            guard self.wantsRunning else { return }
+            let unitDevice = self.unitDevice().map(AudioDevices.name(of:)) ?? "none"
+            let systemDevice = AudioDevices.defaultOutput().map(AudioDevices.name(of:)) ?? "none"
+            Log.output.info("Kliq output: \(unitDevice, privacy: .public); system output: \(systemDevice, privacy: .public)")
+            if self.engine.isRunning, self.targetDevice() == self.pinnedDevice { return }
+            self.restartOutput()
         }
+    }
+
+    private func restartOutput() {
+        Log.output.notice("Restarting output engine")
+        for player in players { player.stop() }
+        engine.stop()
+        start()
+    }
+
+    // MARK: Output device
+
+    /// Changes where sounds play. Takes effect right away if the engine is running.
+    func setOutputRoute(_ route: OutputRoute) {
+        guard route != outputRoute else { return }
+        outputRoute = route
+        if wantsRunning { restartOutput() }
+    }
+
+    /// The device to pin the output to, or nil to follow the system output
+    /// (also the fallback when there are no built-in speakers).
+    private func targetDevice() -> AudioDeviceID? {
+        outputRoute == .builtInSpeakers ? AudioDevices.builtInOutput() : nil
+    }
+
+    /// Points the engine's output unit at the target device. Only Kliq's own
+    /// output unit changes; the system default output is left alone. Call
+    /// while the engine is stopped.
+    private func applyOutputDevice() {
+        let target = targetDevice()
+        if outputRoute == .builtInSpeakers, target == nil {
+            Log.output.notice("No built-in output available; following the system output")
+        }
+        defer { onOutputDeviceChange?(pinnedDevice.map(AudioDevices.name(of:))) }
+        guard target != pinnedDevice else { return }
+
+        guard let target else {
+            // An output unit that was given a device no longer follows the
+            // system default, but a fresh engine does.
+            rebuildEngine()
+            return
+        }
+        guard let unit = engine.outputNode.audioUnit else { return }
+        var device = target
+        let status = AudioUnitSetProperty(unit, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0,
+                                          &device, UInt32(MemoryLayout<AudioDeviceID>.size))
+        guard status == noErr else {
+            Log.output.error("Couldn't set the output device (\(status)); following the system output")
+            if pinnedDevice != nil { rebuildEngine() }
+            return
+        }
+        pinnedDevice = target
+        Log.output.info("Output device: \(AudioDevices.name(of: target), privacy: .public)")
+
+        // The mixer was connected in the previous device's format.
+        let hardware = engine.outputNode.outputFormat(forBus: 0)
+        if hardware.sampleRate > 0,
+           let format = AVAudioFormat(standardFormatWithSampleRate: hardware.sampleRate,
+                                      channels: hardware.channelCount) {
+            engine.connect(engine.mainMixerNode, to: engine.outputNode, format: format)
+        }
+    }
+
+    /// The device the output unit is actually playing to.
+    private func unitDevice() -> AudioDeviceID? {
+        guard let unit = engine.outputNode.audioUnit else { return nil }
+        var device = AudioDeviceID(kAudioObjectUnknown)
+        var size = UInt32(MemoryLayout<AudioDeviceID>.size)
+        let status = AudioUnitGetProperty(unit, kAudioOutputUnitProperty_CurrentDevice, kAudioUnitScope_Global, 0,
+                                          &device, &size)
+        return status == noErr && device != kAudioObjectUnknown ? device : nil
+    }
+
+    /// Replaces the engine with a fresh one; players are recreated on the next `start()`.
+    private func rebuildEngine() {
+        Log.output.info("Rebuilding output engine")
+        if let configObserver { NotificationCenter.default.removeObserver(configObserver) }
+        configObserver = nil
+        for player in players { player.stop() }
+        engine.stop()
+        engine = AVAudioEngine()
+        players = []
+        varispeeds = []
+        nextPlayer = 0
+        pinnedDevice = nil
     }
 
     /// Restarts the engine if it should be running but isn't (wake from sleep, failed restart).
